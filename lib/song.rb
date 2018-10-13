@@ -35,7 +35,7 @@ class Song
 
   def self.genres
     #Is there any difference between .uniq! and .uniq
-    @@genres.uniq!
+    @@genres.uniq
   end
 #genre_count wants us to find a way to create a hash that has the genres linked to a key number in chronological order
   def self.genre_count
