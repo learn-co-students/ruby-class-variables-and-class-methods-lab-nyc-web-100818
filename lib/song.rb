@@ -1,3 +1,5 @@
+#require 'pry'
+
 class Song
 
   attr_accessor :name, :artist, :genre
@@ -30,7 +32,7 @@ class Song
     #What made us use .uniq!?
     #How did we know that there are more than one artists under thesame name?
     #Maybe there are reapeated songs too
-    @@artists.uniq!
+    @@artists.uniq
   end
 
   def self.genres
@@ -39,7 +41,7 @@ class Song
   end
 #genre_count wants us to find a way to create a hash that has the genres linked to a key number in chronological order
   def self.genre_count
-    genre_count = {}
+    #genre_count = {}
     #How can I pick .each genre .count them and link them with a key which are numbers that are counted.
 
     #a.each {|x| print x, " -- " }
@@ -47,9 +49,23 @@ class Song
     #genre_count
 
     #where did we find this formate?
+
+    # genre_count = {}
+    # @@genres.each do |genre|
+    #   if genre_count.has_key?[genre]
+    #       genre_count[genre] += 1
+    #   else
+    #     genre_count[genre] = 1
+    #   end
+    #   genre_count
+    # end
+
+    genre_count = {}
+    #binding.pry
     @@genres.each { |genre| genre_count[genre] = @@genres.count(genre) }
+    #binding.pry
     genre_count
-  end
+end
 
   def self.artist_count
     artist_count = {}
