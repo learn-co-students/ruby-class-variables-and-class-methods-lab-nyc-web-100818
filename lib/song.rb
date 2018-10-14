@@ -1,14 +1,13 @@
+
+ #create a list to keep track of # of songs in each genre it creates
 class Song
 
-  @@count = 0 #start at 0, track # of songs it creates
-  @@artists = []
-   # create a list to show us all artists of existing songs
-  @@genres = []
-  @@artist_count = {}
-  @@genre_count = {}
+  attr_accessor :name, :artist, :genre
 
-    #takes in 3 arguments (song title, artist of existing songs, genres of existing songs)
-    attr_accessor :name, :artist, :genre
+  @@genres = []
+  @@artists = []
+  @@count = 0
+
 
   def initialize(name, artist, genre)
     @name = name
@@ -23,35 +22,32 @@ class Song
     @@count
   end
 
-  def self.genres
-    @@genres.uniq
-  end
-
   def self.artists
     @@artists.uniq
   end
 
+
+  def self.genres
+    @@genres.uniq
+  end
+
   def self.genre_count
+    genre_hash = {}
+    #@@genres = []
     @@genres.each do |genre|
-      count = 1
-      if @@genre_count[genre]
-        @@genre_count[genre] = count + 1
-      else
-        @@genre_count[genre] = count
-      end
+      genre_hash[genre] = @@genres.count(genre)
     end
-    @@genre_count
+    genre_hash
   end
 
   def self.artist_count
+    artist_hash = {}
+    count = 0
+      #@@artists = []
     @@artists.each do |artist|
-      count = 1
-      if @@artist_count[artist]
-        @@artist_count[artist] = count + 1
-      else @@artist_count[artist] = count
-      end
+      artist_hash[artist] = @@artists.count(artist)
     end
-    @@artist_count
+    artist_hash
   end
 
 end
